@@ -11,7 +11,7 @@
 
   nix = {
     optimise = {
-      dates = "daily";
+      dates = [ "daily" ];
       automatic = true;
     };
     gc = {
