@@ -4,7 +4,7 @@
   system.autoUpgrade = {
     enable = true;
     persistent = true;
-    allowReboot = true;
+    allowReboot = false;
     randomizedDelaySec = "0";
     dates = "12:00";
   };
