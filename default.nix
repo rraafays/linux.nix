@@ -56,7 +56,6 @@
   programs.fish.enable = true;
   programs.command-not-found.enable = true;
   programs.starship.enable = true;
-  programs.steam.enable = true;
   users.defaultUserShell = pkgs.fish;
   services.getty.autologinUser = "raf";
   services.udisks2.enable = true;
@@ -84,4 +83,11 @@
     expat
     SDL2
   ];
+
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+  };
 }
