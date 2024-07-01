@@ -40,10 +40,28 @@
     '';
   };
 
-  hardware.uinput.enable = true;
   services.udev.packages = with pkgs; [
     game-devices-udev-rules
   ];
+
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+  };
+
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    input.General.ClassicBondedOnly = false;
+    input.General.UserspaceHID = true;
+  };
 
   virtualisation.docker = {
     enable = true;
@@ -68,6 +86,16 @@
       "input"
       "docker"
     ];
+  };
+
+  services.postgresql = {
+    enable = true;
+    authentication =
+      pkgs.lib.mkOverride 10 ''
+        local all all              trust
+        host  all all 127.0.0.1/32 trust
+        host  all all ::1/128      trust
+      '';
   };
 
   programs.nix-ld.enable = true;
