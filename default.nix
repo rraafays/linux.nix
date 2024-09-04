@@ -73,7 +73,6 @@
   };
 
   programs.fish.enable = true;
-  programs.command-not-found.enable = true;
   programs.starship.enable = true;
   users.defaultUserShell = pkgs.fish;
   services.getty.autologinUser = "raf";
