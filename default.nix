@@ -98,24 +98,13 @@
       '';
   };
 
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc
-    zlib
-    fuse3
-    icu
-    zlib
-    nss
-    openssl
-    curl
-    expat
-    SDL2
-  ];
-
   programs.steam = {
     enable = true;
     extraCompatPackages = with pkgs; [
       proton-ge-bin
     ];
   };
+
+  services.fwupd.enable = true;
+  services.power-profiles-daemon.enable = true;
 }
