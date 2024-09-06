@@ -64,7 +64,6 @@
         pulse.enable = true;
         wireplumber.enable = true;
       };
-      getty.autologinUser = "raf";
       udisks2.enable = true;
       postgresql = {
         enable = true;
@@ -95,20 +94,6 @@
         enable = true;
         extraCompatPackages = with pkgs; [
           proton-ge-bin
-        ];
-      };
-  };
-
-  users = {
-      defaultUserShell = pkgs.fish;
-      users.raf = {
-        isNormalUser = true;
-        description = "raf";
-        extraGroups = [
-          "networkmanager"
-          "wheel"
-          "input"
-          "docker"
         ];
       };
   };
