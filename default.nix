@@ -52,8 +52,8 @@
   };
 
   services = {
+      openssh.enable = true;
       fwupd.enable = true;
-      power-profiles-daemon.enable = true;
       udev.packages = with pkgs; [
         game-devices-udev-rules
       ];
