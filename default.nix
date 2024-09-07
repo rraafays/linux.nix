@@ -41,39 +41,36 @@
   };
 
   hardware = {
-      uinput.enable = true;
-      pulseaudio.enable = false;
-      bluetooth = {
-        enable = true;
-        powerOnBoot = true;
-        input.General.ClassicBondedOnly = false;
-        input.General.UserspaceHID = true;
-      };
+    uinput.enable = true;
+    pulseaudio.enable = false;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      input.General.ClassicBondedOnly = false;
+      input.General.UserspaceHID = true;
+    };
   };
 
   services = {
-      openssh.enable = true;
-      fwupd.enable = true;
-      udev.packages = with pkgs; [
-        game-devices-udev-rules
-      ];
-      pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-        wireplumber.enable = true;
-      };
-      udisks2.enable = true;
-      postgresql = {
-        enable = true;
-        authentication =
-          pkgs.lib.mkOverride 10 ''
-            local all all              trust
-            host  all all 127.0.0.1/32 trust
-            host  all all ::1/128      trust
-          '';
-      };
+    openssh.enable = true;
+    fwupd.enable = true;
+    udev.packages = with pkgs; [ game-devices-udev-rules ];
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      wireplumber.enable = true;
+    };
+    udisks2.enable = true;
+    postgresql = {
+      enable = true;
+      authentication = pkgs.lib.mkOverride 10 ''
+        local all all              trust
+        host  all all 127.0.0.1/32 trust
+        host  all all ::1/128      trust
+      '';
+    };
   };
 
   sound.enable = true;
@@ -88,13 +85,11 @@
   };
 
   programs = {
-      fish.enable = true;
-      starship.enable = true;
-      steam = {
-        enable = true;
-        extraCompatPackages = with pkgs; [
-          proton-ge-bin
-        ];
-      };
+    fish.enable = true;
+    starship.enable = true;
+    steam = {
+      enable = true;
+      extraCompatPackages = with pkgs; [ proton-ge-bin ];
+    };
   };
 }
