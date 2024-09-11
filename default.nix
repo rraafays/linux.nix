@@ -28,6 +28,28 @@
     dates = "12:00";
   };
 
+  boot = {
+    kernelModules = [ "cpufreq_ondemand" ];
+    kernelParams = [
+      "quiet"
+      "threadirqs"
+      "usbhid"
+      "uinput"
+      "joydev"
+      "mitigations=off"
+      "smt=on"
+    ];
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot = {
+        enable = true;
+        consoleMode = "max";
+        configurationLimit = 20;
+      };
+    };
+    supportedFilesystems = [ "ntfs" ];
+  };
+
   sound.enable = true;
   services = {
     openssh.enable = true;
