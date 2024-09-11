@@ -1,14 +1,6 @@
 { pkgs, ... }:
 
 {
-  system.autoUpgrade = {
-    enable = true;
-    persistent = true;
-    allowReboot = false;
-    randomizedDelaySec = "0";
-    dates = "12:00";
-  };
-
   nix = {
     optimise = {
       dates = [ "daily" ];
@@ -28,29 +20,15 @@
     };
   };
 
-  security.sudo = {
+  system.autoUpgrade = {
     enable = true;
-    execWheelOnly = true;
-    wheelNeedsPassword = true;
-    extraConfig = ''
-      Defaults pwfeedback
-      Defaults timestamp_timeout = 0
-      Defaults lecture = always
-      Defaults passprompt = "> "
-    '';
+    persistent = true;
+    allowReboot = false;
+    randomizedDelaySec = "0";
+    dates = "12:00";
   };
 
-  hardware = {
-    uinput.enable = true;
-    pulseaudio.enable = false;
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-      input.General.ClassicBondedOnly = false;
-      input.General.UserspaceHID = true;
-    };
-  };
-
+  sound.enable = true;
   services = {
     openssh.enable = true;
     fwupd.enable = true;
@@ -63,24 +41,31 @@
       wireplumber.enable = true;
     };
     udisks2.enable = true;
-    postgresql = {
+  };
+
+  security = {
+    rtkit.enable = true;
+    sudo = {
       enable = true;
-      authentication = pkgs.lib.mkOverride 10 ''
-        local all all              trust
-        host  all all 127.0.0.1/32 trust
-        host  all all ::1/128      trust
+      execWheelOnly = true;
+      wheelNeedsPassword = true;
+      extraConfig = ''
+        Defaults pwfeedback
+        Defaults timestamp_timeout = 0
+        Defaults lecture = always
+        Defaults passprompt = "> "
       '';
     };
   };
 
-  sound.enable = true;
-  security.rtkit.enable = true;
-
-  virtualisation.docker = {
-    enable = true;
-    rootless = {
+  hardware = {
+    uinput.enable = true;
+    pulseaudio.enable = false;
+    bluetooth = {
       enable = true;
-      setSocketVariable = true;
+      powerOnBoot = true;
+      input.General.ClassicBondedOnly = false;
+      input.General.UserspaceHID = true;
     };
   };
 
