@@ -25,6 +25,7 @@
     persistent = true;
     allowReboot = false;
     randomizedDelaySec = "0";
+    operation = "boot";
     dates = "12:00";
   };
 
