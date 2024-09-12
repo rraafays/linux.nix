@@ -39,6 +39,7 @@
       "joydev"
       "mitigations=off"
       "smt=on"
+      "pci=realloc"
     ];
     loader = {
       efi.canTouchEfiVariables = true;
