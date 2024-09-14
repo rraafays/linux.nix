@@ -57,13 +57,6 @@
     openssh.enable = true;
     fwupd.enable = true;
     udev.packages = with pkgs; [ game-devices-udev-rules ];
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      wireplumber.enable = true;
-    };
     udisks2.enable = true;
   };
 
@@ -84,7 +77,7 @@
 
   hardware = {
     uinput.enable = true;
-    pulseaudio.enable = false;
+    pulseaudio.enable = true;
     bluetooth = {
       enable = true;
       powerOnBoot = true;
