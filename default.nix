@@ -77,7 +77,10 @@
 
   hardware = {
     uinput.enable = true;
-    pulseaudio.enable = true;
+    pulseaudio = {
+      enable = true;
+      extraConfig = "load-module module-switch-on-connect";
+    };
     bluetooth = {
       enable = true;
       powerOnBoot = true;
