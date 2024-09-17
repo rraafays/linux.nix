@@ -61,6 +61,7 @@
   };
 
   security = {
+    pki.certificateFiles = [ "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" ];
     rtkit.enable = true;
     sudo = {
       enable = true;
