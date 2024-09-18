@@ -64,6 +64,8 @@
     openssh.enable = true;
     fwupd.enable = true;
     udisks2.enable = true;
+    preload.enable = true;
+    earlyoom.enable = true;
   };
 
   security = {
