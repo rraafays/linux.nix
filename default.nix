@@ -52,6 +52,24 @@
     supportedFilesystems = [ "ntfs" ];
   };
 
+  environment.etc."wireplumber/wireplumber.conf.d/50-alsa-config.conf".text = ''
+    monitor.alsa.rules = [
+      {
+        matches = [
+          {
+            node.name = "~alsa_output.*"
+          }
+        ]
+        actions = {
+          update-props = {
+            api.alsa.period-size   = 1024
+            api.alsa.headroom      = 8192
+          }
+        }
+      }
+    ]
+  '';
+
   sound.enable = true;
   services = {
     pipewire = {
