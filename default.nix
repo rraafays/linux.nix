@@ -69,7 +69,7 @@
     ananicy.enable = true;
     fstrim.enable = true;
     logrotate.enable = true;
-    thermald.enable = true;
+    auto-cpufreq.enable = true;
   };
 
   security = {
