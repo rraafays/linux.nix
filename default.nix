@@ -66,6 +66,9 @@
     udisks2.enable = true;
     preload.enable = true;
     earlyoom.enable = true;
+    ananicy.enable = true;
+    fstrim.enable = true;
+    logrotate.enable = true;
   };
 
   security = {
