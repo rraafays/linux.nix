@@ -38,13 +38,15 @@
   };
 
   boot = {
-    kernelModules = [ "cpufreq_ondemand" ];
-    kernelParams = [
-      "quiet"
-      "threadirqs"
+    kernelModules = [
+      "cpufreq_ondemand"
       "usbhid"
       "uinput"
       "joydev"
+    ];
+    kernelParams = [
+      "quiet"
+      "threadirqs"
       "mitigations=off"
       "smt=on"
       "pci=realloc"

@@ -1,7 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   sound.enable = true;
+  hardware.firmware = [ pkgs.sof-firmware ];
   services.pipewire = {
     enable = true;
     pulse.enable = true;
