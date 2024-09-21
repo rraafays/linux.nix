@@ -39,7 +39,6 @@
 
   boot = {
     kernelModules = [
-      "cpufreq_ondemand"
       "usbhid"
       "uinput"
       "joydev"
@@ -47,8 +46,6 @@
     kernelParams = [
       "quiet"
       "threadirqs"
-      "mitigations=off"
-      "smt=on"
       "pci=realloc"
     ];
     loader = {
@@ -71,7 +68,6 @@
     ananicy.enable = true;
     fstrim.enable = true;
     logrotate.enable = true;
-    auto-cpufreq.enable = true;
   };
 
   security = {
