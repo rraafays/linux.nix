@@ -3,6 +3,7 @@
 {
   sound.enable = true;
   hardware.firmware = [ pkgs.sof-firmware ];
+  environment.systemPackages = [ pkgs.pulsemixer ];
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -11,6 +12,12 @@
       support32Bit = true;
     };
     extraConfig = {
+      pipewire."93-detect-devices" = {
+        context.modules = [
+          { name = "libpipewire-module-alsa"; }
+          { name = "libpipewire-module-udev-detect"; }
+        ];
+      };
       pipewire."92-low-latency" = {
         context.properties = {
           default.clock.rate = 48000;
