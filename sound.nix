@@ -3,7 +3,6 @@
 {
   sound.enable = true;
   hardware.firmware = [ pkgs.sof-firmware ];
-  environment.systemPackages = [ pkgs.pulsemixer ];
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -64,4 +63,17 @@
       }
     ]
   '';
+
+  nixpkgs.overlays = [
+    (self: super: {
+      audio = pkgs.writeScriptBin "audio" ''
+        #!${pkgs.stdenv.shell}
+        pulsemixer
+      '';
+    })
+  ];
+  environment.systemPackages = [
+    pkgs.pulsemixer
+    pkgs.audio
+  ];
 }
