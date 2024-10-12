@@ -60,7 +60,6 @@
   };
 
   services = {
-    envfs.enable = true;
     openssh.enable = true;
     fwupd.enable = true;
     udisks2.enable = true;
