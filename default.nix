@@ -2,40 +2,13 @@
 
 {
   imports = [
-    ./colours.nix
+    ./autoupgrade.nix
     ./bluetooth.nix
-    ./sudo.nix
-    ./sound.nix
+    ./colours.nix
     ./shell.nix
+    ./sound.nix
+    ./sudo.nix
   ];
-
-  nix = {
-    optimise = {
-      dates = [ "daily" ];
-      automatic = true;
-    };
-    gc = {
-      dates = "daily";
-      options = "--delete-older-than 5d";
-      automatic = true;
-    };
-    settings = {
-      auto-optimise-store = true;
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-    };
-  };
-
-  system.autoUpgrade = {
-    enable = true;
-    persistent = true;
-    allowReboot = false;
-    randomizedDelaySec = "0";
-    operation = "boot";
-    dates = "06:00";
-  };
 
   boot = {
     kernelModules = [
