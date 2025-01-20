@@ -33,14 +33,14 @@
   };
 
   services = {
-    openssh.enable = true; # remote access via SSH
-    fwupd.enable = true; # firmware updater
-    udisks2.enable = true; # disk management & automatic mounting
-    preload.enable = true; # preload to improve application startup time
-    earlyoom.enable = true; # kill processes when memory is low
-    ananicy.enable = true; # automatic process priority management
-    fstrim.enable = true; # trim unused blocks on a mounted filesystem
-    logrotate.enable = true; # manage and rotate log files
+    openssh.enable = true;
+    fwupd.enable = true;
+    udisks2.enable = true;
+    preload.enable = true;
+    earlyoom.enable = true;
+    ananicy.enable = true;
+    fstrim.enable = true;
+    logrotate.enable = true;
   };
 
   security = {
@@ -52,5 +52,21 @@
     enable = true;
     algorithm = "zstd";
     memoryPercent = 50;
+  };
+
+  users = {
+    groups.nixosvmtest = { };
+    users.nixosvmtest = {
+      isSystemUser = true;
+      initialPassword = "password";
+      group = "nixosvmtest";
+    };
+  };
+
+  virtualisation.vmVariant = {
+    virtualisation = {
+      memorySize = 2048;
+      cores = 3;
+    };
   };
 }
