@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./autoupgrade.nix
     ./bluetooth.nix
     ./colours.nix
     ./shell.nix
