@@ -35,6 +35,8 @@
     openssh.enable = true;
     fwupd.enable = true;
     udisks2.enable = true;
+    devmon.enable = true;
+    gvfs.enable = true;
     preload.enable = true;
     earlyoom.enable = true;
     ananicy.enable = true;
