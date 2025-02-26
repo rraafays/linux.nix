@@ -42,6 +42,7 @@
     ananicy.enable = true;
     fstrim.enable = true;
     logrotate.enable = true;
+    colord.enable = true;
   };
 
   security = {
