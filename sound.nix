@@ -3,7 +3,7 @@
 {
   hardware.firmware = [ pkgs.sof-firmware ];
   services.pipewire = {
-    enable = true;
+    enable = false;
     extraConfig = {
       pipewire."92-low-latency" = {
         "context.properties" = {
